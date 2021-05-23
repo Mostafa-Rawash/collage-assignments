@@ -8,7 +8,8 @@ graph = {
 }
 visited = []  # List to keep track of visited nodes.
 queue = []  # Initialize a queue
-token = []
+token = ['A', 'B', 'C', 'D', 'E', 'F']
+
 
 def user_frindlly():
     #  will show some chicess
@@ -23,11 +24,16 @@ def user_frindlly():
         bfs(visited, graph, node)
     user_frindlly()
 
+
 def adding_node(parent):
     children = []
     for i in range(int(input("the number of children"))):
         new_chiled = str(input("please Enter the chiled name"))
-        children.append(new_chiled)
+        if new_chiled in graph:
+            print("this chiled un_avilabole")
+        else:
+            children.append(new_chiled)
+
     token.append(parent)
     graph[parent] = children
 
@@ -42,7 +48,7 @@ def creating_new_node():
             pass
     else:
         adding_node(parent)
-    
+
 
 def bfs(visited, graph, node):
     visited = []
@@ -59,8 +65,9 @@ def bfs(visited, graph, node):
                         visited.append(neighbour)
                         queue.append(neighbour)
         except:
-            print("s" , s)
+            print("s", s)
 # Driver Code
 # bfs(visited, graph, 'A')
+
 
 user_frindlly()
